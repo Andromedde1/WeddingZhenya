@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Приглашение на свадьбу</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="device-switcher">
+    <button type="button" class="device-btn" data-view="phone" title="Вид как на телефоне">Телефон</button>
+    <button type="button" class="device-btn" data-view="desktop" title="Вид как на компьютере">ПК</button>
+  </div>
+
+  <main class="page">
+    <!-- Секция 1: Обложка -->
+    <section id="cover" class="section section-cover">
+      <div class="bg-pattern bg-pattern-cover"></div>
+      <div class="cover-image-wrap">
+        <img src="assets/cover.jpg" alt="Дорогие Родители. Мы приглашаем вас на нашу свадьбу" class="cover-image">
+      </div>
+      <div class="cover-overlay"></div>
+      <div class="section-hearts" aria-hidden="true">
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+      </div>
+      <div class="cover-content">
+        <div class="cover-top">
+          <p class="cover-subtitle" id="cover-subtitle" aria-label="Дорогие Родители. Мы приглашаем вас на нашу свадьбу">
+            <span class="cover-subtitle-line cover-subtitle-line--guest" id="cover-line-1">Дорогие Родители</span>
+            <span class="cover-subtitle-line cover-subtitle-line--invite" id="cover-line-2">Мы приглашаем вас</span>
+            <span class="cover-subtitle-line cover-subtitle-line--invite" id="cover-line-3">на нашу свадьбу</span>
+          </p>
+        </div>
+        <div class="cover-bottom">
+          <p class="cover-names">Антон & Татьяна</p>
+          <p class="love-note">25 · 07 · 2026</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция 2: Календарь -->
+    <section id="calendar" class="section section-calendar">
+      <div class="bg-pattern"><span class="bg-text" data-pos="tl">Счастье</span><span class="bg-text" data-pos="br">Любовь</span><span class="bg-text" data-pos="tr">25.07</span></div>
+      <div class="section-hearts" aria-hidden="true">
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+      </div>
+      <div class="container">
+        <h2 class="section-title">Дата торжества</h2>
+        <p class="decor-date-text">25 июля 2026</p>
+        <div class="calendar-wrap">
+          <div class="calendar-header">
+            <span class="calendar-month">Июль 2026</span>
+          </div>
+          <div class="calendar-grid">
+            <div class="calendar-weekdays">
+              <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+            </div>
+            <div class="calendar-days" id="calendar-days"></div>
+          </div>
+          <div class="calendar-date-highlight">
+            <span class="heart-wrap"><span class="heart">♥</span> 25 июля 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция 3: Место проведения -->
+    <section id="venue" class="section section-venue">
+      <div class="bg-pattern"><span class="bg-text" data-pos="bl">Навсегда</span><span class="bg-text" data-pos="tr">Happiness</span><span class="bg-text" data-pos="mr">Ждем вас</span></div>
+      <div class="section-hearts" aria-hidden="true">
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+      </div>
+      <div class="container">
+        <h2 class="section-title">Место проведения</h2>
+        <p class="decor-love decor-love-inline">мы ждём вас</p>
+        <p class="venue-name">Ресторан «Своя среда»</p>
+        <p class="venue-address">Самара, Барбошина Поляна, 9 просека, 2 лин., 44</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD+%D0%A1%D0%B2%D0%BE%D1%8F+%D1%81%D1%80%D0%B5%D0%B4%D0%B0+%D0%91%D0%B0%D1%80%D0%B1%D0%BE%D1%88%D0%B8%D0%BD%D0%B0+%D0%9F%D0%BE%D0%BB%D1%8F%D0%BD%D0%B0+9+%D0%BF%D1%80%D0%BE%D1%81%D0%B5%D0%BA%D0%B0+2+%D0%BB%D0%B8%D0%BD+44+%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%B0+443031" target="_blank" rel="noopener noreferrer" class="btn-map">Открыть на карте</a>
+        <div class="venue-gallery">
+          <div class="polaroid-wrap">
+            <div class="polaroid-photo">
+              <img src="assets/venue-2.jpg" onerror="this.onerror=null;this.src='assets/venue-3.jpg'" alt="Ресторан Своя среда — интерьер" class="venue-photo">
+            </div>
+          </div>
+          <div class="polaroid-wrap">
+            <div class="polaroid-photo">
+              <img src="assets/venue-3.jpg" onerror="this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80'" alt="Ресторан — зал" class="venue-photo">
+            </div>
+          </div>
+          <div class="polaroid-wrap">
+            <div class="polaroid-photo">
+              <img src="assets/venue-4.jpg" onerror="this.src='https://images.unsplash.com/photo-1544148103-0773bf10d330?w=800&q=80'" alt="Ресторан — терраса" class="venue-photo">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция 4: Расписание -->
+    <section id="schedule" class="section section-schedule">
+      <div class="bg-pattern"><span class="bg-text" data-pos="tl">Вместе</span><span class="bg-text" data-pos="br">Love</span><span class="bg-text" data-pos="ml">Радость</span></div>
+      <div class="section-hearts" aria-hidden="true">
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+      </div>
+      <div class="container">
+        <h2 class="section-title">Расписание мероприятия</h2>
+        <p class="decor-date-text">25 · 07 · 2026</p>
+        <ul class="schedule-list">
+          <li class="schedule-item">
+            <div class="schedule-item-content">
+              <span class="schedule-time">14:30</span>
+              <span class="schedule-text">Начало сбора гостей</span>
+            </div>
+            <div class="schedule-pic">
+              <img src="assets/schedule-map.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1524661135-423995f22d0b?w=200&q=80'" alt="Место на карте">
+            </div>
+          </li>
+          <li class="schedule-item">
+            <div class="schedule-item-content">
+              <span class="schedule-time">15:00</span>
+              <span class="schedule-text">Церемония регистрации</span>
+            </div>
+            <div class="schedule-pic">
+              <img src="assets/schedule-rings.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=200&q=80'" alt="Обручальные кольца">
+            </div>
+          </li>
+          <li class="schedule-item">
+            <div class="schedule-item-content">
+              <span class="schedule-time">16:00</span>
+              <span class="schedule-text">Начало банкета</span>
+            </div>
+            <div class="schedule-pic">
+              <img src="assets/schedule-food.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=200&q=80'" alt="Банкет">
+            </div>
+          </li>
+          <li class="schedule-item">
+            <div class="schedule-item-content">
+              <span class="schedule-time">21:00</span>
+              <span class="schedule-text">Начало свободной программы</span>
+            </div>
+            <div class="schedule-pic">
+              <img src="assets/schedule-music.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=200&q=80'" alt="Музыка">
+            </div>
+          </li>
+          <li class="schedule-item">
+            <div class="schedule-item-content">
+              <span class="schedule-time">22:00</span>
+              <span class="schedule-text">Завершение вечера</span>
+            </div>
+            <div class="schedule-pic">
+              <img src="assets/schedule-end.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1464366400600-716ab811b04d?w=200&q=80'" alt="Завершение вечера">
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Секция 5: Дресс-код -->
+    <section id="dresscode" class="section section-dresscode">
+      <div class="bg-pattern"><span class="bg-text" data-pos="tr">Совсем скоро</span><span class="bg-text" data-pos="bl">Свадьба</span><span class="bg-text" data-pos="tl">Радость</span></div>
+      <div class="section-hearts" aria-hidden="true">
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+      </div>
+      <div class="container">
+        <h2 class="section-title">Дресс-код</h2>
+        <p class="decor-love decor-love-inline">выберите свой цвет</p>
+        <p class="dresscode-intro dresscode-intro-main">Мы очень ждём и готовимся к нашему незабываемому дню! Поддержите нас Вашими улыбками и объятиями, а также красивыми нарядами в палитре мероприятия(подразумеваются любые оттенки цветов, как целиком костюма, так и выделяющегося элемента одежды)</p>
+        <div class="dresscode-circles">
+          <div class="color-group">
+            <div class="color-row">
+              <div class="color-circle color-blue"></div>
+              <div class="color-circle color-blue-1"></div>
+              <div class="color-circle color-blue-2"></div>
+              <div class="color-circle color-blue-light"></div>
+              <div class="color-circle color-blue-3"></div>
+              <div class="color-circle color-blue-dark"></div>
+            </div>
+            <span class="color-name">Синий</span>
+          </div>
+          <div class="color-group">
+            <div class="color-row">
+              <div class="color-circle color-green"></div>
+              <div class="color-circle color-green-1"></div>
+              <div class="color-circle color-green-2"></div>
+              <div class="color-circle color-green-light"></div>
+              <div class="color-circle color-green-3"></div>
+              <div class="color-circle color-green-dark"></div>
+            </div>
+            <span class="color-name">Зелёный</span>
+          </div>
+          <div class="color-group">
+            <div class="color-row">
+              <div class="color-circle color-red"></div>
+              <div class="color-circle color-red-1"></div>
+              <div class="color-circle color-red-2"></div>
+              <div class="color-circle color-red-light"></div>
+              <div class="color-circle color-red-3"></div>
+              <div class="color-circle color-red-dark"></div>
+            </div>
+            <span class="color-name">Красный</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция 6: Контакты -->
+    <section id="contacts" class="section section-contacts">
+      <div class="bg-pattern"><span class="bg-text" data-pos="tl">Счастье</span><span class="bg-text" data-pos="br">Ждем вас</span></div>
+      <div class="section-hearts" aria-hidden="true">
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+      </div>
+      <div class="container">
+        <h2 class="section-title">Наши контакты</h2>
+        <p class="decor-love decor-love-inline">на связи</p>
+        <div class="contacts-list">
+          <div class="contact-card">
+            <span class="contact-name">Антон</span>
+            <a href="tel:+79279049003" class="contact-phone">+7 927 904-90-03</a>
+            <div class="contact-photo-wrap">
+              <img src="assets/contact-anton.jpg" onerror="this.style.display='none'" alt="Антон" class="contact-photo">
+            </div>
+          </div>
+          <div class="contact-card">
+            <span class="contact-name">Татьяна</span>
+            <a href="tel:+79111853767" class="contact-phone">+7 911 185-37-67</a>
+            <div class="contact-photo-wrap">
+              <img src="assets/contact-tatiana.jpg" onerror="this.style.display='none'" alt="Татьяна" class="contact-photo">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция 7: Анкета -->
+    <section id="rsvp" class="section section-rsvp">
+      <div class="bg-pattern"><span class="bg-text" data-pos="tr">Любовь</span><span class="bg-text" data-pos="bl">Радость</span></div>
+      <div class="section-hearts" aria-hidden="true">
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+      </div>
+      <div class="container">
+        <h2 class="rsvp-heading" id="rsvp-heading">Будем очень рады видеть</h2>
+        <p class="rsvp-subheading">Пожалуйста, подтвердите, придёте ли вы на нашу свадьбу</p>
+        <form class="rsvp-form" id="rsvp-form" action="https://formspree.io/f/xreaqyjo" method="POST">
+          <input type="hidden" name="_subject" id="form-subject" value="Ответ на приглашение на свадьбу">
+          <input type="hidden" name="кому_приглашение" id="guest-hidden" value="">
+          <label class="form-label">
+            <span>Придёте ли вы на свадьбу?</span>
+            <select name="coming" id="coming" class="form-select" required>
+              <option value="">Выберите ответ</option>
+              <option value="yes">Да, с удовольствием!</option>
+              <option value="no">К сожалению, не смогу</option>
+            </select>
+          </label>
+          <button type="submit" class="btn-submit">Отправить</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Секция 8: Таймер -->
+    <section id="timer" class="section section-timer">
+      <div class="bg-pattern"><span class="bg-text" data-pos="tl">Навсегда</span><span class="bg-text" data-pos="br">25.07</span></div>
+      <div class="section-hearts" aria-hidden="true">
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+      </div>
+      <div class="container">
+        <h2 class="section-title">До торжества осталось</h2>
+        <div class="countdown" id="countdown">
+          <div class="countdown-item">
+            <span class="countdown-value" id="days">0</span>
+            <span class="countdown-label">дней</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-value" id="hours">0</span>
+            <span class="countdown-label">часов</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-value" id="minutes">0</span>
+            <span class="countdown-label">минут</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-value" id="seconds">0</span>
+            <span class="countdown-label">секунд</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Финал -->
+    <section id="goodbye" class="section section-goodbye">
+      <div class="bg-pattern"><span class="bg-text" data-pos="tl">Love</span><span class="bg-text" data-pos="br">Свадьба</span><span class="bg-text" data-pos="tr">Happiness</span></div>
+      <div class="section-hearts" aria-hidden="true">
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+        <span class="floating-heart"></span>
+      </div>
+      <div class="container">
+        <p class="goodbye-text">До скорой встречи</p>
+        <p class="decor-love decor-love-inline">любовь и счастье</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="quiz-overlay" id="quiz-overlay" hidden aria-hidden="true">
+    <div class="quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quiz-question">
+      <p class="quiz-progress" id="quiz-progress"></p>
+      <h3 class="quiz-question" id="quiz-question"></h3>
+      <div class="quiz-body" id="quiz-body"></div>
+      <div class="quiz-actions">
+        <button type="button" class="quiz-btn quiz-btn-skip" id="quiz-skip">Пропустить</button>
+        <button type="button" class="quiz-btn quiz-btn-next" id="quiz-next">Далее</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="invite-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

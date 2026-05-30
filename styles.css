@@ -1,0 +1,1108 @@
+/* Шрифт Lolita: скачайте с https://fonts-online.ru/fonts/lolita и поместите в папку fonts */
+@font-face {
+  font-family: 'Lolita';
+  src: url('fonts/Lolita.woff2') format('woff2'), url('fonts/Lolita.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --pastel-pink: #f8e4e8;
+  --pastel-pink-2: #f5d0d8;
+  --pastel-rose: #fce4ec;
+  --white: #ffffff;
+  --text-soft: #5d4e60;
+  --text-dark: #3d3540;
+  --shadow-soft: rgba(93, 78, 96, 0.1);
+  --font-main: 'Lolita', 'Caveat', cursive;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-main);
+  font-weight: 400;
+  color: var(--text-dark);
+  background: var(--pastel-pink);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Сердца: над фоном секции и градиентом обложки, под контентом */
+.section-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.section-cover .section-hearts {
+  z-index: 2;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -40px;
+  opacity: 0;
+  animation: heart-float 14s linear infinite;
+}
+
+.floating-heart::before {
+  content: '❤';
+  color: rgba(198, 40, 40, 0.24);
+  font-size: clamp(16px, 2.6vw, 30px);
+  display: block;
+}
+
+.section-cover .floating-heart::before {
+  color: rgba(198, 40, 40, 0.34);
+}
+
+.floating-heart:nth-child(1) { left: 6%; animation-delay: 0s; }
+.floating-heart:nth-child(2) { left: 15%; animation-delay: 2s; animation-duration: 12s; }
+.floating-heart:nth-child(3) { left: 26%; animation-delay: 4.2s; }
+.floating-heart:nth-child(4) { left: 38%; animation-delay: 1.3s; animation-duration: 15s; }
+.floating-heart:nth-child(5) { left: 49%; animation-delay: 6.1s; }
+.floating-heart:nth-child(6) { left: 59%; animation-delay: 3.4s; animation-duration: 13s; }
+.floating-heart:nth-child(7) { left: 70%; animation-delay: 7.3s; }
+.floating-heart:nth-child(8) { left: 79%; animation-delay: 5.4s; animation-duration: 16s; }
+.floating-heart:nth-child(9) { left: 88%; animation-delay: 8.4s; }
+.floating-heart:nth-child(10) { left: 94%; animation-delay: 9.8s; animation-duration: 11.5s; }
+
+@keyframes heart-float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(14px, -45vh, 0) scale(1) rotate(8deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate3d(-10px, -110vh, 0) scale(1.2) rotate(-10deg);
+    opacity: 0;
+  }
+}
+
+/* Фоновые надписи — разные, по углам, не накладываются на основной текст */
+.bg-pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-text {
+  position: absolute;
+  font-family: var(--font-main);
+  font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+  color: rgba(200, 50, 70, 0.35);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.bg-text[data-pos="tl"] { left: 4%; top: 8%; transform: rotate(-8deg); }
+.bg-text[data-pos="tr"] { right: 4%; top: 8%; left: auto; transform: rotate(6deg); }
+.bg-text[data-pos="bl"] { left: 5%; bottom: 10%; transform: rotate(5deg); }
+.bg-text[data-pos="br"] { right: 5%; bottom: 10%; left: auto; transform: rotate(-6deg); }
+.bg-text[data-pos="ml"] { left: 2%; top: 50%; transform: rotate(-12deg) translateY(-50%); }
+.bg-text[data-pos="mr"] { right: 2%; top: 50%; left: auto; transform: rotate(10deg) translateY(-50%); }
+
+.section {
+  background: var(--pastel-pink);
+  transition: background 0.4s ease;
+  position: relative;
+}
+
+.section-cover { background: var(--pastel-pink) !important; }
+.section-calendar { background: linear-gradient(180deg, var(--pastel-pink) 0%, var(--pastel-rose) 100%) !important; }
+.section-venue { background: linear-gradient(180deg, var(--pastel-rose) 0%, var(--white) 100%) !important; }
+.section-schedule { background: linear-gradient(180deg, var(--white) 0%, var(--pastel-rose) 100%) !important; }
+.section-dresscode { background: linear-gradient(180deg, var(--pastel-rose) 0%, var(--pastel-pink) 100%) !important; }
+.section-contacts { background: linear-gradient(180deg, var(--pastel-pink) 0%, var(--white) 100%) !important; }
+.section-rsvp { background: linear-gradient(180deg, var(--white) 0%, var(--pastel-rose) 100%) !important; }
+.section-timer { background: linear-gradient(180deg, var(--pastel-rose) 0%, var(--pastel-pink) 100%) !important; }
+.section-goodbye { background: linear-gradient(180deg, var(--pastel-pink) 0%, var(--white) 100%) !important; }
+
+/* Волны в углах */
+.section::before {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 50%;
+  top: 10%;
+  right: 5%;
+  z-index: 0;
+}
+
+.section:nth-child(even)::before {
+  right: auto;
+  left: 5%;
+}
+
+/* Переключатель устройств: по умолчанию телефон */
+.device-switcher {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 1000;
+  display: flex;
+  gap: 4px;
+  background: rgba(255,255,255,0.95);
+  padding: 4px;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px var(--shadow-soft);
+}
+
+.device-btn {
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 16px;
+  background: transparent;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.device-btn:hover { color: var(--text-dark); }
+
+.device-btn.active {
+  background: var(--pastel-pink-2);
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+body.viewport-phone .page {
+  max-width: 390px;
+  margin: 0 auto;
+  min-height: 100vh;
+  box-shadow: 0 0 40px rgba(0,0,0,0.08);
+  overflow: visible;
+}
+
+/* Обложка на всю ширину экрана на телефоне */
+body.viewport-phone .section-cover {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+body.viewport-phone .section-cover .cover-image-wrap,
+body.viewport-phone .section-cover .cover-overlay {
+  width: 100%;
+  max-width: 100vw;
+  left: 0;
+  right: 0;
+  transform: none;
+}
+
+body.viewport-desktop .page { max-width: none; margin: 0; }
+body.viewport-desktop .section-cover { width: 100%; max-width: 100vw; margin-left: 0; margin-right: 0; }
+body.viewport-desktop .section-cover .cover-image-wrap,
+body.viewport-desktop .section-cover .cover-overlay { width: 100%; max-width: 100%; left: 0; right: 0; transform: none; }
+
+.page {
+  display: block;
+  position: relative;
+}
+
+.section {
+  min-height: 100vh;
+  padding: 1.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-family: var(--font-main);
+  font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.decor-date-text {
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  color: var(--text-soft);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.decor-love {
+  position: absolute;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: rgba(0,0,0,0.2);
+}
+
+.decor-love-inline {
+  position: static !important;
+  text-align: center;
+  margin-bottom: 0.35rem;
+  font-size: 1rem;
+}
+
+/* --- Обложка: фото менее размыто (лёгкий оверлей) --- */
+.section-cover {
+  padding: 0;
+  min-height: 100vh;
+  justify-content: flex-start;
+  align-items: stretch;
+  text-align: center;
+}
+
+body.viewport-desktop .section-cover {
+  justify-content: center;
+  align-items: center;
+}
+
+.cover-image-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Телефон: фон под портретный формат; фокус чуть выше центра — лица свободнее от текста внизу */
+body.viewport-phone .cover-image {
+  object-fit: cover;
+  object-position: center 26%;
+}
+
+/* ПК: фон на всю ширину */
+body.viewport-desktop .cover-image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  /* Лёгкий градиент снизу — как на ПК раньше */
+  background: linear-gradient(to top, rgba(248, 228, 232, 0.25) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+.cover-top,
+.cover-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Обводка текста обложки: тонкая «кайма» через тени, без пересечений штриха */
+.cover-subtitle,
+.cover-title,
+.cover-names,
+.cover-content .love-note {
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow:
+    -1px -1px 0 rgba(122, 24, 36, 0.55),
+    1px -1px 0 rgba(122, 24, 36, 0.55),
+    -1px 1px 0 rgba(122, 24, 36, 0.55),
+    1px 1px 0 rgba(122, 24, 36, 0.55),
+    0 0 6px rgba(122, 24, 36, 0.35),
+    0 2px 14px rgba(0, 0, 0, 0.22);
+}
+
+/* Текст обложки — белый, яркий, чёткий, по центру */
+.cover-subtitle {
+  font-family: var(--font-main);
+  font-size: clamp(2.85rem, 6vw, 3.45rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 0.55rem;
+  line-height: 1.08;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.05em;
+}
+
+.cover-subtitle-line {
+  display: block;
+  line-height: 1.05;
+}
+
+.cover-subtitle-line--guest {
+  letter-spacing: 0.14em;
+  margin-bottom: 0.2em;
+}
+
+.cover-subtitle-line--invite {
+  font-size: 0.72em;
+  letter-spacing: 0.1em;
+  text-transform: none;
+}
+
+.cover-title {
+  font-family: var(--font-main);
+  font-size: clamp(5rem, 14vw, 9rem);
+  margin: 0 0 0.55rem;
+  line-height: 1.12;
+  max-width: 95%;
+}
+
+.cover-title-part {
+  display: inline;
+}
+
+/* Пробелы между словами на ПК и при обычной вёрстке */
+.cover-title-part--1::after,
+.cover-title-part--2::after {
+  content: '\00a0';
+}
+
+.cover-names {
+  font-family: var(--font-main);
+  font-size: clamp(3rem, 7vw, 4.5rem);
+  line-height: 1.2;
+  margin: 0.35rem 0 0;
+}
+
+.cover-content .love-note {
+  font-size: clamp(2.2rem, 4vw, 2.5rem);
+  letter-spacing: 0.15em;
+  margin: 0.65rem 0 0;
+  line-height: 1.2;
+}
+
+/* --- Календарь крупнее --- */
+.calendar-wrap {
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 8px 32px var(--shadow-soft);
+}
+
+.calendar-header { text-align: center; margin-bottom: 0.5rem; }
+
+.calendar-month {
+  font-family: var(--font-main);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  text-align: center;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.calendar-days .day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: var(--text-soft);
+  font-family: var(--font-main);
+}
+
+.calendar-days .day.other-month { opacity: 0.35; }
+
+.calendar-days .day.wedding-date {
+  background: var(--white);
+  color: var(--text-dark);
+  font-weight: 700;
+  border: 2px solid var(--pastel-pink-2);
+}
+
+.calendar-days .day.wedding-date::after {
+  content: ' ♥';
+  font-size: 0.7em;
+  color: #e91e63;
+}
+
+.calendar-date-highlight {
+  text-align: center;
+  margin-top: 0.75rem;
+  font-family: var(--font-main);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.heart-wrap .heart { color: var(--pastel-pink-2); margin-right: 4px; }
+
+/* --- Поляроид --- */
+.polaroid-wrap {
+  background: var(--white);
+  padding: 12px 12px 14px;
+  box-shadow: 0 4px 20px var(--shadow-soft), 0 1px 3px rgba(0,0,0,0.06);
+  transform: rotate(-1deg);
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.polaroid-wrap:nth-child(2) { transform: rotate(1.5deg); }
+.polaroid-wrap:nth-child(3) { transform: rotate(-2deg); }
+
+.polaroid-photo { overflow: hidden; border: 1px solid rgba(0,0,0,0.06); }
+
+.venue-photo {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Кнопка «Открыть на карте» */
+.btn-map {
+  display: inline-block;
+  margin: 0 auto 1rem;
+  padding: 0.85rem 1.5rem;
+  background: var(--text-dark);
+  color: var(--white) !important;
+  text-decoration: none;
+  border-radius: 12px;
+  font-family: var(--font-main);
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: 0 4px 16px var(--shadow-soft);
+}
+
+.btn-map:hover { opacity: 0.9; }
+
+.venue-name {
+  font-family: var(--font-main);
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.35rem;
+  color: var(--text-dark);
+}
+
+.venue-address, .venue-desc {
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.venue-desc { margin-bottom: 0.5rem; }
+
+.venue-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+
+/* --- Расписание с картинками --- */
+.schedule-list {
+  list-style: none;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.schedule-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.6rem;
+  background: rgba(255,255,255,0.92);
+  border-radius: 14px;
+  box-shadow: 0 4px 16px var(--shadow-soft);
+  font-family: var(--font-main);
+  flex-wrap: wrap;
+}
+
+.schedule-item-content {
+  flex: 1;
+  min-width: 180px;
+}
+
+.schedule-time {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--text-dark);
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.schedule-text { color: var(--text-soft); font-size: 1.05rem; font-weight: 600; }
+
+.schedule-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.schedule-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Дресс-код --- */
+.dresscode-intro {
+  text-align: center;
+  color: var(--text-soft);
+  margin-bottom: 1rem;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.dresscode-intro-main {
+  line-height: 1.5;
+  font-size: 1.1rem;
+}
+
+.dresscode-circles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.color-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.color-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.color-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+}
+
+/* Синий: от светлого к тёмному */
+.color-blue   { background: #90caf9; }
+.color-blue-1 { background: #64b5f6; }
+.color-blue-2 { background: #42a5f5; }
+.color-blue-light { background: #1565c0; }
+.color-blue-3 { background: #0d47a1; }
+.color-blue-dark { background: #0d47a1; }
+
+/* Зелёный: от светлого к тёмному */
+.color-green   { background: #a5d6a7; }
+.color-green-1 { background: #81c784; }
+.color-green-2 { background: #66bb6a; }
+.color-green-light { background: #2e7d32; }
+.color-green-3 { background: #1b5e20; }
+.color-green-dark { background: #1b5e20; }
+
+/* Красный: от светлого к тёмному */
+.color-red   { background: #e57373; }
+.color-red-1 { background: #ef5350; }
+.color-red-2 { background: #c62828; }
+.color-red-light { background: #c62828; }
+.color-red-3 { background: #b71c1c; }
+.color-red-dark { background: #b71c1c; }
+
+.color-name {
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* --- Контакты с фото под каждым --- */
+.contacts-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.contact-card {
+  background: rgba(255,255,255,0.95);
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px var(--shadow-soft);
+  text-align: center;
+  min-width: 200px;
+  max-width: 280px;
+  font-family: var(--font-main);
+}
+
+.contact-name {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  color: var(--text-dark);
+}
+
+.contact-phone {
+  color: var(--text-soft);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.contact-phone:hover { color: var(--text-dark); }
+
+.contact-photo-wrap {
+  margin-top: 0.35rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--pastel-pink);
+  min-height: 100px;
+}
+
+.contact-photo {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- Анкета: заголовки --- */
+.rsvp-heading {
+  font-family: var(--font-main);
+  font-size: clamp(2.25rem, 5.5vw, 3.25rem);
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-dark);
+  margin-bottom: 0.35rem;
+  line-height: 1.2;
+}
+
+.rsvp-subheading {
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.rsvp-form { max-width: 420px; margin: 0 auto; }
+
+.form-label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-main);
+}
+
+.form-label span {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.form-input, .form-select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--pastel-pink-2);
+  border-radius: 10px;
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  background: var(--white);
+  color: var(--text-dark);
+}
+
+.form-group-hidden { display: none; }
+.form-group-visible { display: block; }
+
+.rsvp-when-yes {
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed rgba(93, 78, 96, 0.25);
+}
+
+.rsvp-subblock {
+  margin-bottom: 0.85rem;
+}
+
+.rsvp-subblock:last-child {
+  margin-bottom: 0;
+}
+
+#children-extra .form-label:last-child,
+#partner-extra .form-label:last-child {
+  margin-bottom: 0;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  margin-top: 0.5rem;
+  background: var(--text-dark);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-submit:hover { background: var(--text-soft); }
+
+/* --- Всплывающие вопросы после RSVP «Да» --- */
+body.quiz-open { overflow: hidden; }
+
+.quiz-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(61, 53, 64, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.quiz-overlay[hidden] { display: none; }
+
+.quiz-modal {
+  width: min(100%, 420px);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 1.5rem 1.35rem 1.25rem;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px var(--shadow-soft);
+}
+
+.quiz-progress {
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.quiz-question {
+  font-family: var(--font-main);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  text-align: center;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.quiz-body { margin-bottom: 1rem; }
+
+.quiz-input,
+.quiz-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--pastel-pink-2);
+  border-radius: 10px;
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  background: var(--white);
+  color: var(--text-dark);
+}
+
+.quiz-textarea { resize: vertical; min-height: 100px; }
+
+.quiz-body--text .quiz-textarea--wishes {
+  min-height: 120px;
+}
+
+.quiz-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quiz-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--pastel-pink-2);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  color: var(--text-dark);
+}
+
+.quiz-choice:has(input:checked) {
+  border-color: var(--text-dark);
+  background: var(--pastel-rose);
+}
+
+.quiz-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.quiz-btn {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.quiz-btn-skip {
+  background: var(--pastel-pink);
+  color: var(--text-soft);
+}
+
+.quiz-btn-next {
+  background: var(--text-dark);
+  color: var(--white);
+}
+
+.quiz-btn-next:hover { background: var(--text-soft); }
+
+/* --- Таймер --- */
+.countdown {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.countdown-item {
+  background: rgba(255,255,255,0.95);
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  min-width: 88px;
+  text-align: center;
+  box-shadow: 0 6px 24px var(--shadow-soft);
+  font-family: var(--font-main);
+}
+
+.countdown-value {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.countdown-label { font-size: 0.95rem; font-weight: 600; color: var(--text-soft); }
+
+/* --- Финал --- */
+.section-goodbye { min-height: 40vh; padding: 1.5rem 1rem; }
+
+.goodbye-text {
+  font-family: var(--font-main);
+  font-size: clamp(2rem, 5.5vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-dark);
+  margin-bottom: 0.35rem;
+}
+
+/* ПК-версия: всё крупнее */
+body.viewport-desktop .section { padding: 2.5rem 2rem; }
+body.viewport-desktop .section-title { font-size: clamp(2.75rem, 4vw, 4rem); }
+body.viewport-desktop .decor-date-text { font-size: 1.35rem; }
+body.viewport-desktop .decor-love-inline { font-size: 1.2rem; }
+body.viewport-desktop .venue-name { font-size: 2.5rem; }
+body.viewport-desktop .venue-address,
+body.viewport-desktop .venue-desc { font-size: 1.3rem; }
+body.viewport-desktop .calendar-wrap { max-width: 440px; padding: 1.5rem; }
+body.viewport-desktop .calendar-month { font-size: 1.75rem; }
+body.viewport-desktop .calendar-weekdays { font-size: 1.1rem; }
+body.viewport-desktop .calendar-days { font-size: 1.25rem; }
+body.viewport-desktop .calendar-date-highlight { font-size: 1.5rem; }
+body.viewport-desktop .schedule-list { max-width: 600px; }
+body.viewport-desktop .schedule-time { font-size: 1.35rem; }
+body.viewport-desktop .schedule-text { font-size: 1.2rem; }
+body.viewport-desktop .dresscode-intro,
+body.viewport-desktop .dresscode-intro-main { font-size: 1.3rem; }
+body.viewport-desktop .color-name { font-size: 1.25rem; }
+body.viewport-desktop .contact-name { font-size: 1.65rem; }
+body.viewport-desktop .contact-phone { font-size: 1.25rem; }
+body.viewport-desktop .rsvp-heading { font-size: clamp(2.75rem, 4vw, 3.5rem); }
+body.viewport-desktop .rsvp-subheading { font-size: 1.25rem; }
+body.viewport-desktop .form-label span { font-size: 1.15rem; }
+body.viewport-desktop .form-input,
+body.viewport-desktop .form-select { font-size: 1.15rem; padding: 0.85rem 1.2rem; }
+body.viewport-desktop .countdown-value { font-size: 3rem; }
+body.viewport-desktop .countdown-label { font-size: 1.1rem; }
+body.viewport-desktop .countdown-item { min-width: 100px; padding: 1.25rem 1.5rem; }
+body.viewport-desktop .goodbye-text { font-size: 3rem; }
+body.viewport-desktop .cover-title { font-size: clamp(6rem, 12vw, 10rem); }
+body.viewport-desktop .cover-subtitle { font-size: clamp(3.1rem, 5.2vw, 3.9rem); }
+body.viewport-desktop .cover-names { font-size: clamp(3rem, 5vw, 4.5rem); }
+body.viewport-desktop .cover-content .love-note { font-size: clamp(2.5rem, 4vw, 3rem); }
+body.viewport-desktop .cover-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 2rem 3rem;
+  flex: none;
+  min-height: 0;
+  width: 100%;
+  max-width: 100%;
+}
+body.viewport-desktop .cover-top,
+body.viewport-desktop .cover-bottom {
+  display: contents;
+}
+body.viewport-desktop .btn-map { font-size: 1.25rem; padding: 1rem 1.75rem; }
+body.viewport-desktop .bg-text { font-size: clamp(1rem, 1.5vw, 1.5rem); }
+
+@media (max-width: 600px) {
+  .section { padding: 1.5rem 0.75rem; }
+  .countdown-item { min-width: 72px; padding: 1rem; }
+  .countdown-value { font-size: 2rem; }
+  .device-switcher { top: 8px; right: 8px; font-size: 0.85rem; }
+}
+
+/* === Added: mobile cover width aligned with other sections === */
+body.viewport-phone .section-cover {
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.viewport-phone .cover-content {
+  align-self: stretch;
+  flex: 1;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(env(safe-area-inset-top, 0px) + 3.1rem) 1rem calc(env(safe-area-inset-bottom, 0px) + 1.5rem);
+}
+
+body.viewport-phone .cover-top {
+  flex-shrink: 0;
+}
+
+body.viewport-phone .cover-subtitle {
+  margin: 0;
+  font-size: clamp(2.15rem, 6.2vw, 3rem);
+  letter-spacing: 0.14em;
+  gap: 0.04em;
+}
+
+body.viewport-phone .cover-bottom {
+  flex-shrink: 0;
+  padding-bottom: 0.25rem;
+}
+
+/* Заголовок в одну строку по возможности; «На», «нашу», «свадьбу» — один размер */
+body.viewport-phone .cover-title {
+  display: block;
+  font-size: clamp(2.85rem, 10vw, 3.85rem);
+  margin-bottom: 0.35rem;
+  line-height: 1.15;
+  max-width: 100%;
+}
+
+body.viewport-phone .cover-title-part {
+  display: inline;
+  font-size: inherit;
+}
+
+body.viewport-phone .cover-names {
+  font-size: clamp(2.15rem, 6vw, 2.85rem);
+  margin-top: 0.1rem;
+}
+
+body.viewport-phone .cover-content .love-note {
+  font-size: clamp(1.75rem, 5vw, 2.35rem);
+  margin-top: 0.4rem;
+}
+
+body.viewport-phone .section-cover .cover-overlay {
+  background:
+    linear-gradient(to bottom, rgba(45, 30, 35, 0.42) 0%, transparent 48%),
+    linear-gradient(to top, rgba(248, 228, 232, 0.45) 0%, transparent 55%);
+}
+
+body.viewport-phone .section-cover .cover-image-wrap,
+body.viewport-phone .section-cover .cover-overlay {
+  max-width: 420px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
